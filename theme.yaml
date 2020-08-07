@@ -5,7 +5,7 @@ license: GPLv3
 licenselink: https://www.gnu.org/licenses/gpl-3.0.html
 description: Manage lazyloading
 homepage: https://github.com/divinerites/divinerites-lazyload
-version: 1.0.0
+version: 1.0.1
 tags:
   - lazyloading
   - vanillia-lazyload

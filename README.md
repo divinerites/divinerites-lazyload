@@ -2,54 +2,42 @@
 
 ## About
 
-- Use lazyloading if set in your project.
+- Use lazyloading in your project (images, iframes, ...)
 
 ## Usage
 
-### Using our buit-in lazyload librairy
+- Add a `params.global.lazyload` section in your `config.toml`
+- Update `label` with the value your lazyload name
+  - `lazy` for [vanillia-lazyload](https://github.com/verlok/vanilla-lazyload)
+  - `lozad` for [lozad](https://github.com/ApoorvSaxena/lozad.js)
 
-- Add header and footer
-- Config.toml option : `label = "lazy"`
+### Add a section in your `config.toml`
 
 ```toml
-# Include this in your config.toml
-
-# Gestion lazyload
 [params.global.lazyload]
-   enable = true
+   enable = true (only lazy at  the moment)
    local = true
-   label = "lazy"
+   label = "lazy"  # lazy / lozad
 ```
 
-File : in your `header` section
+### Call partials in your `<head>` and `<footer>`
 
 ```go-html-template
-<!-- HEADER Gestion du lazyloading des images -->
+<head>
+...
+<!-- HEADER Manage images lazyloading -->
 {{ partial "header_lazyload.html" . }}
+...
+</head>
 ```
 
-File : in your `footer` section
-
 ```go-html-template
-<!-- FOOTER : Pour Images avec/sans LazyLoading -->
+<footer>
+...
+<!-- FOOTER : For images with/without LazyLoading -->
 {{ partial "footer_lazyload.html" . }}
-```
-
-### Using an other lazyload librairy
-
-```toml
-# Include this in your config.toml
-
-# Gestion lazyload
-[params.global.lazyload]
-   enable = false
-   label = "lozad"  #for eample used in meghna theme
-```
-
-### HTML template Usage
-
-```go-html-template
-
+...
+</footer>
 ```
 
 ### iframe
@@ -59,5 +47,6 @@ For iframe with the **built-in lazyload** : just add `class="lazy"`
 ### Credits
 
 - Original idea : https://discourse.gohugo.io/t/responsive-lazy-loaded-images/26041
-- lazyload : https://github.com/verlok/vanilla-lazyload
+  - vanilla lazyload : https://github.com/verlok/vanilla-lazyload
+  - lozad : https://github.com/ApoorvSaxena/lozad.js (from meghna theme)
 - Copyright © 2020 onwards, Didier Divinerites
