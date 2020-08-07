@@ -1,0 +1,17 @@
+# theme.yaml configuration file
+
+name: divinerites-lazyload
+license: GPLv3
+licenselink: https://www.gnu.org/licenses/gpl-3.0.html
+description: Manage lazyloading
+homepage: https://github.com/divinerites/divinerites-lazyload
+version: 1.0.0
+tags:
+  - lazyloading
+  - vanillia-lazyload
+  - lozad
+features:
+  - Manage easily lazyloading
+min_version: 0.50.0
+author:
+  name: Didier Divinerites
