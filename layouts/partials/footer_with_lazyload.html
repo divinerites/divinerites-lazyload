@@ -1,8 +1,5 @@
 <!-- A utiliser si on fait du Lazyload des images -->
 {{- $selector := site.Params.global.lazyload.label }}
-<script>
-   var lazyLoadInstance = new LazyLoad({
-     elements_selector: ".{{ $selector }}",
-     cancel_on_exit: true
-   });
- </script>
+{{- $js := printf "js/footer_with_lazyload_%s.js" $selector }}
+{{- $script := resources.Get $js | minify | fingerprint "sha384" }}
+<script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
