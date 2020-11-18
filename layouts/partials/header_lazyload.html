@@ -24,11 +24,7 @@
 
       {{- else if (eq .label "lazyload") }}
          <!-- github.com/aFarkas/lazysizes -->
-         {{- $js := resources.Get "js/lazysizes/lazysizes.min.js" }}
-         {{- if $isProd }}
-            {{- $js = $js | minify | fingerprint "sha384" }}
-         {{- end }}
-         <script src="{{ $js.RelPermalink }}" {{ if $isProd }}integrity="{{ $js.Data.Integrity }}"{{ end }} async=""></script>
+         <!-- Move to footer from header -->
 
       {{- else }}
          <!-- Label inconnu -->
