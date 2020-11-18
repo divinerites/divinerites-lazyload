@@ -1,5 +1,9 @@
 <!-- A utiliser si on fait du Lazyload des images -->
+{{- if (eq site.Params.global.lazyload.label "lazyload") }}
+   <!-- No footer script -->
+{{- else }}
 {{- $selector := site.Params.global.lazyload.label }}
 {{- $js := printf "js/footer_with_lazyload_%s.js" $selector }}
 {{- $script := resources.Get $js | minify | fingerprint "sha384" }}
 <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}"></script>
+{{- end }}

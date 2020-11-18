@@ -1,17 +1,40 @@
 {{- with site.Params.global.lazyload }}
    {{- if .enable }}
       {{- $isProd := hugo.IsProduction -}}
-      {{- if .local }}
-         {{- $js0 := resources.Get "js/intersection-observer.js" }}
-         {{- $js1 := resources.Get "js/lazyload.min.js" }}
-         {{- $js := slice $js0 $js1 | resources.Concat "js/concat_lazyload.js" }}
+
+      <!-- Choix de la bibliothèque de lazyloading -->
+      {{- if (eq .label "lazy")}}
+         <!-- github.com/verlok/vanilla-lazyload -->
+         {{- if .local }}
+            {{- $js0 := resources.Get "js/intersection-observer.js" }}
+            {{- $js1 := resources.Get "js/lazyload-17.1.0.min.js" }}
+
+            {{- $js := slice $js0 $js1 | resources.Concat "js/concat_lazyload_lazy.js" }}
+            {{- if $isProd }}
+               {{- $js = $js | minify | fingerprint "sha384" }}
+            {{- end }}
+            <script src="{{ $js.RelPermalink }}" {{ if $isProd }}integrity="{{ $js.Data.Integrity }}"{{ end }}></script>
+         {{- else }}
+            <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.7.0/intersection-observer.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.1.0/dist/lazyload.min.js"></script>
+         {{- end }}
+
+      {{- else if (eq .label "lozad") }}
+         <!-- github.com/ApoorvSaxena/lozad.js -->
+
+      {{- else if (eq .label "lazyload") }}
+         <!-- github.com/aFarkas/lazysizes -->
+         {{- $js := resources.Get "js/lazysizes/lazysizes.min.js" }}
          {{- if $isProd }}
             {{- $js = $js | minify | fingerprint "sha384" }}
          {{- end }}
-         <script src="{{ $js.RelPermalink }}" {{ if $isProd }}integrity="{{ $js.Data.Integrity }}"{{ end }}></script>
+         <script src="{{ $js.RelPermalink }}" {{ if $isProd }}integrity="{{ $js.Data.Integrity }}"{{ end }} async=""></script>
+
       {{- else }}
-         <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.7.0/intersection-observer.js"></script>
-         <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@16.1.0/dist/lazyload.min.js"></script>
+         <!-- Label inconnu -->
+         {{- $_text := "[params.global.lazyload] : Ce label [%s] est inconnu. Utiliser `lazy`, `lozad` ou `lazyload`." }}
+         {{- errorf $_text .label }}
       {{- end }}
+
    {{- end }}
 {{- end }}

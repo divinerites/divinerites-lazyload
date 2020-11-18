@@ -9,7 +9,8 @@
 - Add a `params.global.lazyload` section in your `config.toml`
 - Update `label` with the value your lazyload name
   - `lazy` for [vanillia-lazyload](https://github.com/verlok/vanilla-lazyload)
-  - `lozad` for [lozad](https://github.com/ApoorvSaxena/lozad.js)
+  - `lozad` for [lozad](https://github.com/ApoorvSaxena/lozad.js) in MEGHNA THEME ONLY
+  - `lazysizes` for [lazysizes](github.com/aFarkas/lazysizes)
 
 ### Add a section in your `config.toml`
 
@@ -17,7 +18,7 @@
 [params.global.lazyload]
    enable = true (only lazy at  the moment)
    local = true
-   label = "lazy"  # lazy / lozad
+   label = "lazy"  # lazy / lozad / lazysizes
 ```
 
 ### Call partials in your `<head>` and `<footer>`
@@ -49,4 +50,5 @@ For iframe with the **built-in lazyload** : just add `class="lazy"`
 - Original idea : https://discourse.gohugo.io/t/responsive-lazy-loaded-images/26041
   - vanilla lazyload : https://github.com/verlok/vanilla-lazyload
   - lozad : https://github.com/ApoorvSaxena/lozad.js (from meghna theme)
+  - lazysizes : https://github.com/aFarkas/lazysizes
 - Copyright © 2020 onwards, Didier Divinerites
