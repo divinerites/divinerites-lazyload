@@ -7,8 +7,7 @@
          <!-- github.com/verlok/vanilla-lazyload -->
          {{- if .local }}
             {{- $js0 := resources.Get "js/intersection-observer.js" }}
-            {{- $js1 := resources.Get "js/lazyload-17.1.0.min.js" }}
-
+            {{- $js1 := resources.Get "js/lazyload-17.2.0.min.js" }}
             {{- $js := slice $js0 $js1 | resources.Concat "js/concat_lazyload_lazy.js" }}
             {{- if $isProd }}
                {{- $js = $js | minify | fingerprint "sha384" }}
