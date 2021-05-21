@@ -6,6 +6,7 @@
       {{- if (eq .label "lazy")}}
          <!-- github.com/verlok/vanilla-lazyload -->
          {{- if .local }}
+            {{ printf "<!-- Lazyload : LOCAL github.com/verlok/vanilla-lazyload -->" | safeHTML }}
             {{- $js0 := resources.Get "js/intersection-observer.js" }}
             {{- $js1 := resources.Get "js/lazyload-17.3.1.min.js" }}
             {{- $js := slice $js0 $js1 | resources.Concat "js/concat_lazyload_lazy.js" }}
@@ -14,16 +15,21 @@
             {{- end }}
             <script src="{{ $js.RelPermalink }}" {{ if $isProd }}integrity="{{ $js.Data.Integrity }}"{{ end }}></script>
          {{- else }}
+            {{ printf "<!-- Lazyload : https://cdn.jsdelivr.net/npm/vanilla-lazyload -->" | safeHTML }}
             <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.7.0/intersection-observer.js"></script>
             <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.3.1/dist/lazyload.min.js"></script>
          {{- end }}
 
       {{- else if (eq .label "lozad") }}
          <!-- github.com/ApoorvSaxena/lozad.js -->
+         {{ printf "<!-- Lazyload : github.com/ApoorvSaxena/lozad.js -->" | safeHTML }}
+
 
       {{- else if (eq .label "lazyload") }}
          <!-- github.com/aFarkas/lazysizes -->
          <!-- Move to footer from header -->
+         {{ printf "<!-- Lazyload : github.com/aFarkas/lazysizes -->" | safeHTML }}
+
 
       {{- else }}
          <!-- Label inconnu -->
