@@ -10,7 +10,7 @@
          {{- if $isProd }}
             {{- $js = $js | minify | fingerprint "sha384" }}
          {{- end }}
-         <script src="{{ $js.RelPermalink }}" {{ if $isProd }}integrity="{{ $js.Data.Integrity }}"{{ end }} async=""></script>
+         <script src="{{ $js.RelPermalink }}" {{ if $isProd }}integrity="{{ $js.Data.Integrity }}"{{ end }} async ></script>
 
       {{- else }}
          <!-- js scripts are in header (TODO : CHECK) -->
